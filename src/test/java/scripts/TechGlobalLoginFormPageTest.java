@@ -7,11 +7,11 @@ import pages.TechGlobalFrontendTestingPage;
 import pages.TechGlobalLoginFormPage;
 import pages.TechGlobalResetPasswordPage;
 import utilities.TestData;
-import utilities.Waiter;
+
 
 public class TechGlobalLoginFormPageTest extends TechGlobalBasePageTest{
 
-// why my browser does not quit when test FAIL
+
     @BeforeMethod
     public void setUp(){
         techGlobalFrontendTestingPage = new TechGlobalFrontendTestingPage();
@@ -104,7 +104,7 @@ public class TechGlobalLoginFormPageTest extends TechGlobalBasePageTest{
     Then user should be navigated back to Login Form
      */
 
-   // If we can do like this
+
     @Test(priority = 3, description = "validate TechGlobal Login Form card valid login and then logout")
     public void validatingTechGlobalLoginFormValidLoginLogout(){
         techGlobalLoginFormPage.loginFormBoxInputs.get(0).sendKeys(TestData.loginFormCorrectUsername);
@@ -129,7 +129,7 @@ public class TechGlobalLoginFormPageTest extends TechGlobalBasePageTest{
     And user should see “SUBMIT” button
      */
 
-        // Should it be heading 1 or 2, because there is heading 2 in the code
+
     @Test(priority = 4, description = "validate TechGlobal Login Form card Forgot Password Link " +
             "and Reset Password page")
     public void validatingLoginFormForgotPasswordLink(){
@@ -173,7 +173,7 @@ public class TechGlobalLoginFormPageTest extends TechGlobalBasePageTest{
     public void validatingLoginFormResetPasswordLink(){
         techGlobalResetPasswordPage = new TechGlobalResetPasswordPage();
         techGlobalLoginFormPage.loginFormForgotPasswordLink.click();
-        techGlobalResetPasswordPage.resetPasswordEmailBox.sendKeys("tg@gmail.com");
+        techGlobalResetPasswordPage.resetPasswordEmailBox.sendKeys(TestData.emailForResetPassword);
         techGlobalResetPasswordPage.resetPasswordSubmitButton.click();
 
         /**
