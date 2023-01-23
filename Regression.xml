@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Regression">
+    <test verbose="2"
+          name="All Functionalities">
+        <classes>
+            <class name="scripts.TechGlobalLoginFormPageTest">
+                <methods>
+                    <include name="validateTechGlobalLoginFormCard"/>
+                    <include name="validatingLoginFormValidLogin"/>
+                    <include name="validatingTechGlobalLoginFormValidLoginLogout"/>
+                    <include name="validatingLoginFormForgotPasswordLink"/>
+                    <include name="validatingLoginFormResetPasswordLink"/>
+                    <include name="validatingLoginFormInvalidLoginWithWrongUsername"/>
+                    <include name="validatingLoginFormInvalidLoginWithWrongPassword"/>
+                    <include name="validatingLoginFormInvalidLoginWithWrongBothCredentials"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

@@ -1,0 +1,13 @@
+expected_texts/TechGlobalLoginFormPageExpectedText.class
+pages/TechGlobalBasePage.class
+utilities/Waiter.class
+scripts/TechGlobalBasePageTest.class
+expected_texts/TechGlobalResetPasswordPageExpectedText.class
+utilities/Driver.class
+test_data/TechGlobalLoginFormPageTestData.class
+pages/TechGlobalResetPasswordPage.class
+utilities/ConfigReader.class
+pages/TechGlobalLoginFormPage.class
+pages/TechGlobalFrontendTestingPage.class
+test_data/TechGlobalResetPasswordPageTestData.class
+scripts/TechGlobalLoginFormPageTest.class

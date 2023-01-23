@@ -1,12 +1,15 @@
 package scripts;
 
+import expected_texts.TechGlobalLoginFormPageExpectedText;
+import expected_texts.TechGlobalResetPasswordPageExpectedText;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.TechGlobalFrontendTestingPage;
 import pages.TechGlobalLoginFormPage;
 import pages.TechGlobalResetPasswordPage;
-import utilities.TestData;
+import test_data.TechGlobalLoginFormPageTestData;
+import test_data.TechGlobalResetPasswordPageTestData;
 
 
 public class TechGlobalLoginFormPageTest extends TechGlobalBasePageTest{
@@ -39,7 +42,7 @@ public class TechGlobalLoginFormPageTest extends TechGlobalBasePageTest{
          * validating that user is on the “Login Form” page
          */
 
-        Assert.assertEquals(techGlobalLoginFormPage.loginFormH1.getText(), TestData.loginFormH1);
+        Assert.assertEquals(techGlobalLoginFormPage.loginFormH1.getText(), TechGlobalLoginFormPageExpectedText.loginFormH1);
 
         for (int i = 0; i < 2; i++) {
             /**
@@ -47,7 +50,7 @@ public class TechGlobalLoginFormPageTest extends TechGlobalBasePageTest{
              */
             Assert.assertTrue(techGlobalLoginFormPage.loginFormBoxLabels.get(i).isDisplayed());
             Assert.assertEquals(techGlobalLoginFormPage.loginFormBoxLabels.get(i).getText(),
-                    TestData.labelForLoginFormBoxes[i]);
+                    TechGlobalLoginFormPageExpectedText.labelForLoginFormBoxes[i]);
 
             /**
              *  validating that USERNAME and PASSWORD input boxes are displayed
@@ -84,8 +87,10 @@ public class TechGlobalLoginFormPageTest extends TechGlobalBasePageTest{
      */
     @Test(priority = 2, description = "validate TechGlobal Login Form card valid login")
     public void validatingLoginFormValidLogin(){
-            techGlobalLoginFormPage.loginFormBoxInputs.get(0).sendKeys(TestData.loginFormCorrectUsername);
-            techGlobalLoginFormPage.loginFormBoxInputs.get(1).sendKeys(TestData.loginFormCorrectPassword);
+            techGlobalLoginFormPage.loginFormBoxInputs.get(0).
+                    sendKeys(TechGlobalLoginFormPageTestData.loginFormCorrectUsername);
+            techGlobalLoginFormPage.loginFormBoxInputs.get(1).
+                    sendKeys(TechGlobalLoginFormPageTestData.loginFormCorrectPassword);
             techGlobalLoginFormPage.loginFormLoginButton.click();
 
             Assert.assertTrue(techGlobalLoginFormPage.loginFormYouAreLoggedInMassage.isDisplayed());
@@ -107,8 +112,10 @@ public class TechGlobalLoginFormPageTest extends TechGlobalBasePageTest{
 
     @Test(priority = 3, description = "validate TechGlobal Login Form card valid login and then logout")
     public void validatingTechGlobalLoginFormValidLoginLogout(){
-        techGlobalLoginFormPage.loginFormBoxInputs.get(0).sendKeys(TestData.loginFormCorrectUsername);
-        techGlobalLoginFormPage.loginFormBoxInputs.get(1).sendKeys(TestData.loginFormCorrectPassword);
+        techGlobalLoginFormPage.loginFormBoxInputs.get(0).
+                sendKeys(TechGlobalLoginFormPageTestData.loginFormCorrectUsername);
+        techGlobalLoginFormPage.loginFormBoxInputs.get(1).
+                sendKeys(TechGlobalLoginFormPageTestData.loginFormCorrectPassword);
         techGlobalLoginFormPage.loginFormLoginButton.click();
         techGlobalLoginFormPage.loginFormLogoutButton.click();
 
@@ -140,12 +147,14 @@ public class TechGlobalLoginFormPageTest extends TechGlobalBasePageTest{
          * validating header of page
          */
         Assert.assertTrue(techGlobalResetPasswordPage.resetPasswordH2.isDisplayed());
-        Assert.assertEquals(techGlobalResetPasswordPage.resetPasswordH2.getText(), TestData.resetPasswordH2);
+        Assert.assertEquals(techGlobalResetPasswordPage.resetPasswordH2.getText(),
+                TechGlobalResetPasswordPageExpectedText.resetPasswordH2);
         /**
          * validating LABEL message
          */
         Assert.assertTrue(techGlobalResetPasswordPage.resetPasswordLabel.isEnabled());
-        Assert.assertEquals(techGlobalResetPasswordPage.resetPasswordLabel.getText(), TestData.resetPasswordPageMessage);
+        Assert.assertEquals(techGlobalResetPasswordPage.resetPasswordLabel.getText(),
+                TechGlobalResetPasswordPageExpectedText.resetPasswordPageMessage);
         /**
          * validating EMAIL BOX is displayed
          */
@@ -173,7 +182,8 @@ public class TechGlobalLoginFormPageTest extends TechGlobalBasePageTest{
     public void validatingLoginFormResetPasswordLink(){
         techGlobalResetPasswordPage = new TechGlobalResetPasswordPage();
         techGlobalLoginFormPage.loginFormForgotPasswordLink.click();
-        techGlobalResetPasswordPage.resetPasswordEmailBox.sendKeys(TestData.emailForResetPassword);
+        techGlobalResetPasswordPage.resetPasswordEmailBox.
+                sendKeys(TechGlobalResetPasswordPageTestData.emailForResetPassword);
         techGlobalResetPasswordPage.resetPasswordSubmitButton.click();
 
         /**
@@ -181,7 +191,7 @@ public class TechGlobalLoginFormPageTest extends TechGlobalBasePageTest{
          */
         Assert.assertTrue(techGlobalResetPasswordPage.resetPasswordConfirmationMessage.isDisplayed());
         Assert.assertEquals(techGlobalResetPasswordPage.resetPasswordConfirmationMessage.getText(),
-                TestData.resatPasswordConfirmationMessage);
+                TechGlobalResetPasswordPageExpectedText.resatPasswordConfirmationMessage);
    }
    /*Test Case 6: Validate TechGlobal Login Form card invalid login with
     wrong username
@@ -195,12 +205,15 @@ public class TechGlobalLoginFormPageTest extends TechGlobalBasePageTest{
     */
     @Test(priority = 6, description = "Validate TechGlobal Login Form card invalid login with wrong username")
     public void validatingLoginFormInvalidLoginWithWrongUsername(){
-        techGlobalLoginFormPage.loginFormBoxInputs.get(0).sendKeys(TestData.wrongUsername);
-        techGlobalLoginFormPage.loginFormBoxInputs.get(1).sendKeys(TestData.loginFormCorrectPassword);
+        techGlobalLoginFormPage.loginFormBoxInputs.get(0).
+                sendKeys(TechGlobalLoginFormPageTestData.wrongUsername);
+        techGlobalLoginFormPage.loginFormBoxInputs.get(1).
+                sendKeys(TechGlobalLoginFormPageTestData.loginFormCorrectPassword);
         techGlobalLoginFormPage.loginFormLoginButton.click();
 
        Assert.assertTrue(techGlobalLoginFormPage.wrongInputErrorMessage.isDisplayed());
-       Assert.assertEquals(techGlobalLoginFormPage.wrongInputErrorMessage.getText(), TestData.errorMessageWrongUsername);
+       Assert.assertEquals(techGlobalLoginFormPage.wrongInputErrorMessage.getText(),
+               TechGlobalLoginFormPageExpectedText.errorMessageWrongUsername);
     }
 
     /*Test Case 7: Validate TechGlobal Login Form card invalid login with
@@ -216,12 +229,13 @@ public class TechGlobalLoginFormPageTest extends TechGlobalBasePageTest{
 
     @Test(priority = 7, description = "validate TechGlobal Login Form card invalid login with wrong password")
     public void validatingLoginFormInvalidLoginWithWrongPassword(){
-        techGlobalLoginFormPage.loginFormBoxInputs.get(0).sendKeys(TestData.loginFormCorrectUsername);
-        techGlobalLoginFormPage.loginFormBoxInputs.get(1).sendKeys(TestData.wrongPassword);
+        techGlobalLoginFormPage.loginFormBoxInputs.get(0).sendKeys(TechGlobalLoginFormPageTestData.loginFormCorrectUsername);
+        techGlobalLoginFormPage.loginFormBoxInputs.get(1).sendKeys(TechGlobalLoginFormPageTestData.wrongPassword);
         techGlobalLoginFormPage.loginFormLoginButton.click();
 
         Assert.assertTrue(techGlobalLoginFormPage.wrongInputErrorMessage.isDisplayed());
-        Assert.assertEquals(techGlobalLoginFormPage.wrongInputErrorMessage.getText(), TestData.errorMessageWrongPassword);
+        Assert.assertEquals(techGlobalLoginFormPage.wrongInputErrorMessage.getText(),
+                TechGlobalLoginFormPageExpectedText.errorMessageWrongPassword);
 
     }
     /*Test Case 8: Validate TechGlobal Login Form card invalid login with
@@ -237,12 +251,13 @@ public class TechGlobalLoginFormPageTest extends TechGlobalBasePageTest{
     @Test (priority = 8, description = "validate TechGlobal Login Form card invalid login with " +
             "both wrong credentials")
     public void validatingLoginFormInvalidLoginWithWrongBothCredentials(){
-        techGlobalLoginFormPage.loginFormBoxInputs.get(0).sendKeys(TestData.wrongUsername);
-        techGlobalLoginFormPage.loginFormBoxInputs.get(1).sendKeys(TestData.wrongPassword);
+        techGlobalLoginFormPage.loginFormBoxInputs.get(0).sendKeys(TechGlobalLoginFormPageTestData.wrongUsername);
+        techGlobalLoginFormPage.loginFormBoxInputs.get(1).sendKeys(TechGlobalLoginFormPageTestData.wrongPassword);
         techGlobalLoginFormPage.loginFormLoginButton.click();
 
         Assert.assertTrue(techGlobalLoginFormPage.wrongInputErrorMessage.isDisplayed());
-        Assert.assertEquals(techGlobalLoginFormPage.wrongInputErrorMessage.getText(), TestData.errorMessageWrongUsername);
+        Assert.assertEquals(techGlobalLoginFormPage.wrongInputErrorMessage.getText(),
+                TechGlobalLoginFormPageExpectedText.errorMessageWrongUsername);
     }
 
 

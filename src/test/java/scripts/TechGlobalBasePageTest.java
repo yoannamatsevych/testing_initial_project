@@ -7,6 +7,7 @@ import pages.TechGlobalBasePage;
 import pages.TechGlobalFrontendTestingPage;
 import pages.TechGlobalLoginFormPage;
 import pages.TechGlobalResetPasswordPage;
+import utilities.ConfigReader;
 import utilities.Driver;
 
 public class TechGlobalBasePageTest {
@@ -22,7 +23,7 @@ public class TechGlobalBasePageTest {
     @BeforeMethod
     public void setup() {
         driver = Driver.getDriver();
-        driver.get("https://techglobal-training.netlify.app/");
+        driver.get(ConfigReader.getProperty("appURL"));
 
         techGlobalBasePage = new TechGlobalBasePage();
     }
